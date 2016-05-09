@@ -1,0 +1,28 @@
+--:: Collections ::--
+
+-:: Users
+
+-:: Avatars
+
+-:: Quests
+
+-:: Tags
+
+-:: Itens
+
+-:: Missions
+
+
+--:: Models ::--
+
+-:: User
+
+-:: Avatar --: userId
+
+-:: Quest --: userId
+
+-:: Tag --: userId
+
+-:: Item --: userId
+
+-:: Mission --: userId

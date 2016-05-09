@@ -1,0 +1,11 @@
+{
+  "result":[
+    {
+      "userID":"rafaelbruno.web@gmail.com",
+      "name":"Sword 1",
+      "desc":"Level 1 Sword",
+      "urlImg":"/img/...",
+      "price":"5"
+    }
+  ]
+}

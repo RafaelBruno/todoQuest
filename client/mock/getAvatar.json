@@ -1,0 +1,18 @@
+{
+  "result":{
+    "userId":"rafaelbruno.web@gmail.com",
+    "level":"1",
+    "coins":"10",
+    "quantMissions":"0",
+    "xp":"0",
+    "mana":"0",
+    "avatarType":"default",
+    "sex":"default",
+    "helmet":"default",
+    "armour":"default",
+    "sword":"default",
+    "shield":"default",
+    "magic":"default",
+    "pet":"default"
+  }
+}
