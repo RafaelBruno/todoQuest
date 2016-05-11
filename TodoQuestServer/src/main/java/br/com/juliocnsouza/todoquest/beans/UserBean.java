@@ -27,4 +27,17 @@ public class UserBean extends AbstractFacade<SystemUser> {
         return em;
     }
 
+    public boolean updateWithNoChangesToPassword( SystemUser user ) {
+        if ( user == null || user.getLogin() == null ) {
+            return false;
+        }
+        SystemUser fromDB = getEntity( user.getLogin() );
+        if ( fromDB == null ) {
+            return false;
+        }
+        String psw = fromDB.getPassword();
+        user.setPassword( psw );
+        return saveEntity( user , user.getLogin() ) != null;
+    }
+
 }
