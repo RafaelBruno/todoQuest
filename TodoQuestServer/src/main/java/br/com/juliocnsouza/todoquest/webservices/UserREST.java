@@ -2,7 +2,10 @@ package br.com.juliocnsouza.todoquest.webservices;
 
 import br.com.juliocnsouza.todoquest.beans.AccessBean;
 import br.com.juliocnsouza.todoquest.beans.UserBean;
+import br.com.juliocnsouza.todoquest.util.SimpleMessageJson;
 import br.com.juliocnsouza.todoquest.util.SystemUserUtil;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.ejb.LocalBean;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
@@ -28,13 +31,42 @@ public class UserREST {
     private UserBean userBean;
 
     @POST
-    @Path( "/save/hash" )
+    @Path( "/subscribe" )
+    @Produces( { "application/json" } )
+    public Response subscribe( String json ) {
+        try {
+            if ( userBean.subscribe( new SystemUserUtil().convertFromJson( json ) ) ) {
+                return Response.ok().build();
+            }
+        }
+        catch ( Exception ex ) {
+            Logger.getLogger( UserREST.class.getName() ).log( Level.SEVERE , null , ex );
+            return Response.ok( new SimpleMessageJson( ex.getMessage() ).get() ).build();
+        }
+        return Response.status( Response.Status.BAD_REQUEST ).build();
+    }
+
+    @POST
+    @Path( "/update/hash" )
     @Produces( { "application/json" } )
     public Response save( @PathParam( "hash" ) String hash , String json ) {
         if ( !accessBean.isLogged( hash ) ) {
             return Response.status( Response.Status.UNAUTHORIZED ).build();
         }
         if ( userBean.updateWithNoChangesToPassword( new SystemUserUtil().convertFromJson( json ) ) ) {
+            return Response.ok().build();
+        }
+        return Response.status( Response.Status.BAD_REQUEST ).build();
+    }
+
+    @POST
+    @Path( "/changePassword/hash" )
+    @Produces( { "application/json" } )
+    public Response changePassword( @PathParam( "hash" ) String hash , String json ) {
+        if ( !accessBean.isLogged( hash ) ) {
+            return Response.status( Response.Status.UNAUTHORIZED ).build();
+        }
+        if ( userBean.changePassword( new SystemUserUtil().convertFromJson( json ) ) ) {
             return Response.ok().build();
         }
         return Response.status( Response.Status.BAD_REQUEST ).build();

@@ -3,6 +3,7 @@ package br.com.juliocnsouza.todoquest.collections;
 import br.com.juliocnsouza.todoquest.embeddables.Avatar;
 import br.com.juliocnsouza.todoquest.embeddables.Item;
 import br.com.juliocnsouza.todoquest.embeddables.Tag;
+import br.com.juliocnsouza.todoquest.util.MD5;
 import java.io.Serializable;
 import java.util.List;
 import javax.persistence.ElementCollection;
@@ -63,6 +64,18 @@ public class SystemUser implements Serializable {
 
     public void setPassword( String password ) {
         this.password = password;
+    }
+
+    public void setPasswordMD5( String password ) {
+        this.password = MD5.crypt( password );
+    }
+
+    public void criptPasswordMD5() {
+        this.password = MD5.crypt( this.password );
+    }
+
+    public boolean isPasswordEqual( String pws ) {
+        return this.password.equals( MD5.crypt( pws ) );
     }
 
     public String getFirstName() {

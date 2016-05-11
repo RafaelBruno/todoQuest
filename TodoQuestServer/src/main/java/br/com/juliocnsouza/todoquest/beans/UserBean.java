@@ -31,13 +31,38 @@ public class UserBean extends AbstractFacade<SystemUser> {
         if ( user == null || user.getLogin() == null ) {
             return false;
         }
-        SystemUser fromDB = getEntity( user.getLogin() );
-        if ( fromDB == null ) {
+        SystemUser userOnDB = getEntity( user.getLogin() );
+        if ( userOnDB == null ) {
             return false;
         }
-        String psw = fromDB.getPassword();
-        user.setPassword( psw );
+        String keeptPswEncripeted = userOnDB.getPassword();
+        user.setPassword( keeptPswEncripeted );
         return saveEntity( user , user.getLogin() ) != null;
+    }
+
+    public boolean changePassword( SystemUser user ) {
+        if ( user == null || user.getLogin() == null ) {
+            return false;
+        }
+        SystemUser userOnDB = getEntity( user.getLogin() );
+        if ( userOnDB == null ) {
+            return false;
+        }
+        String newPsw = user.getPassword();
+        userOnDB.setPasswordMD5( newPsw );
+        return saveEntity( userOnDB , user.getLogin() ) != null;
+    }
+
+    public boolean subscribe( SystemUser subscribeUser )
+            throws Exception {
+        if ( subscribeUser == null || subscribeUser.getLogin() == null || subscribeUser.getPassword() == null ) {
+            return false;
+        }
+        if ( getEntity( subscribeUser.getLogin() ) != null ) {
+            throw new Exception( "user alredy exists" );
+        }
+        subscribeUser.criptPasswordMD5();
+        return saveEntity( subscribeUser , subscribeUser.getLogin() ) != null;
     }
 
 }
