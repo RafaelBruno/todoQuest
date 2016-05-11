@@ -15,6 +15,8 @@ import javax.persistence.Query;
  */
 public abstract class AbstractFacade<T> {
 
+    public static final String PERSISTENCE_UNIT = "TodoQuestPU";
+
     public static final String EXCEPTION_WHILE_SAVING_ENTITY = "Exception while saving entity ";
 
     private final Class<T> entityClass;
