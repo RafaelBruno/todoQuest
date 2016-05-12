@@ -7,6 +7,8 @@ import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -20,7 +22,13 @@ import org.eclipse.persistence.nosql.annotations.NoSql;
  */
 @Entity
 @NoSql( dataFormat = DataFormatType.MAPPED )
+@NamedQueries( {
+    @NamedQuery( name = Mission.FIND_ALL_BY_USER ,
+                 query = "SELECT m FROM Mission m WHERE m.userId = :userId ORDER BY m.dateTime DESC" )
+} )
 public class Mission implements Serializable {
+
+    public static final String FIND_ALL_BY_USER = "Mission.FIND_ALL_BY_USER";
 
     private static final long serialVersionUID = 1L;
     @Id

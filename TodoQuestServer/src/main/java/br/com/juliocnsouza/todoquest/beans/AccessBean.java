@@ -1,7 +1,7 @@
 package br.com.juliocnsouza.todoquest.beans;
 
 import br.com.juliocnsouza.todoquest.collections.SystemUser;
-import br.com.juliocnsouza.todoquest.util.SystemUserUtil;
+import br.com.juliocnsouza.todoquest.util.JsonUtil;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Random;
@@ -36,7 +36,7 @@ public class AccessBean {
         }
         SystemUser user = userBean.getEntity( userId );
         if ( user != null && password.equals( user.getPassword() ) ) {
-            SystemUser clone = new SystemUserUtil().clone( user );
+            SystemUser clone = new JsonUtil<SystemUser>( SystemUser.class ).clone( user );
             String generateHash = generateHash( userId );
             loggedUsers.put( generateHash , userId );
             clone.setPassword( generateHash );
@@ -52,6 +52,10 @@ public class AccessBean {
             sb.append( r.nextInt( 100 ) ).append( c );
         }
         return sb.reverse().toString();
+    }
+
+    public String getLogin( String hash ) {
+        return loggedUsers.get( hash );
     }
 
 }

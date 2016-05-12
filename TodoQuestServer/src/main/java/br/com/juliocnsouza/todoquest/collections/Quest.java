@@ -8,6 +8,8 @@ import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import org.eclipse.persistence.nosql.annotations.DataFormatType;
@@ -20,8 +22,13 @@ import org.eclipse.persistence.nosql.annotations.NoSql;
  */
 @Entity
 @NoSql( dataFormat = DataFormatType.MAPPED )
+@NamedQueries( {
+    @NamedQuery( name = Quest.FIND_ALL_BY_USER ,
+                 query = "SELECT q FROM Quest q WHERE q.userId = :userId ORDER BY q.dateTime DESC" )
+} )
 public class Quest implements Serializable {
 
+    public static final String FIND_ALL_BY_USER = "Quest.FIND_ALL_BY_USER";
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue

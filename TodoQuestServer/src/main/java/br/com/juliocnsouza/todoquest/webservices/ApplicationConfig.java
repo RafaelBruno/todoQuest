@@ -28,7 +28,10 @@ public class ApplicationConfig extends Application {
         return resources;
     }
 
-    private void addRestResourceClasses( Set<Class<?>> resources ) {
+    private void addRestResourceClasses( Set<Class<?>> resources) {
+        resources.add( br.com.juliocnsouza.todoquest.webservices.AccessREST.class );
+        resources.add(br.com.juliocnsouza.todoquest.webservices.MissionREST.class );
+        resources.add(br.com.juliocnsouza.todoquest.webservices.QuestREST.class );
         resources.add( br.com.juliocnsouza.todoquest.webservices.UserREST.class );
 
     }

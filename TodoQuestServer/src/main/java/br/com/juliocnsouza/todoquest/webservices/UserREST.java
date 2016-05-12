@@ -2,8 +2,9 @@ package br.com.juliocnsouza.todoquest.webservices;
 
 import br.com.juliocnsouza.todoquest.beans.AccessBean;
 import br.com.juliocnsouza.todoquest.beans.UserBean;
+import br.com.juliocnsouza.todoquest.collections.SystemUser;
+import br.com.juliocnsouza.todoquest.util.JsonUtil;
 import br.com.juliocnsouza.todoquest.util.SimpleMessageJson;
-import br.com.juliocnsouza.todoquest.util.SystemUserUtil;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.ejb.LocalBean;
@@ -35,7 +36,7 @@ public class UserREST {
     @Produces( { "application/json" } )
     public Response subscribe( String json ) {
         try {
-            if ( userBean.subscribe( new SystemUserUtil().convertFromJson( json ) ) ) {
+            if ( userBean.subscribe( new JsonUtil<SystemUser>( SystemUser.class ).fromJson( json ) ) ) {
                 return Response.ok().build();
             }
         }
@@ -53,7 +54,7 @@ public class UserREST {
         if ( !accessBean.isLogged( hash ) ) {
             return Response.status( Response.Status.UNAUTHORIZED ).build();
         }
-        if ( userBean.updateWithNoChangesToPassword( new SystemUserUtil().convertFromJson( json ) ) ) {
+        if ( userBean.updateWithNoChangesToPassword( new JsonUtil<SystemUser>( SystemUser.class ).fromJson( json ) ) ) {
             return Response.ok().build();
         }
         return Response.status( Response.Status.BAD_REQUEST ).build();
@@ -66,7 +67,7 @@ public class UserREST {
         if ( !accessBean.isLogged( hash ) ) {
             return Response.status( Response.Status.UNAUTHORIZED ).build();
         }
-        if ( userBean.changePassword( new SystemUserUtil().convertFromJson( json ) ) ) {
+        if ( userBean.changePassword( new JsonUtil<SystemUser>( SystemUser.class ).fromJson( json ) ) ) {
             return Response.ok().build();
         }
         return Response.status( Response.Status.BAD_REQUEST ).build();
