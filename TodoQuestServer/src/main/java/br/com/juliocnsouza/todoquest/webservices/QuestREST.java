@@ -31,7 +31,7 @@ public class QuestREST {
     private QuestBean questBean;
 
     @POST
-    @Path( "/save/hash" )
+    @Path( "/save/{hash}" )
     @Produces( { "application/json" } )
     public Response save( @PathParam( "hash" ) String hash , String json ) {
         if ( !accessBean.isLogged( hash ) ) {
@@ -45,7 +45,7 @@ public class QuestREST {
     }
 
     @GET
-    @Path( "/find/id/hash" )
+    @Path( "/find/{id}/{hash}" )
     @Produces( { "application/json" } )
     public Response find( @PathParam( "id" ) String id , @PathParam( "hash" ) String hash ) {
         if ( !accessBean.isLogged( hash ) ) {
@@ -59,7 +59,7 @@ public class QuestREST {
     }
 
     @GET
-    @Path( "/find/hash" )
+    @Path( "/find/{hash}" )
     @Produces( { "application/json" } )
     public Response findAllFromUser( @PathParam( "hash" ) String hash ) {
         if ( !accessBean.isLogged( hash ) ) {

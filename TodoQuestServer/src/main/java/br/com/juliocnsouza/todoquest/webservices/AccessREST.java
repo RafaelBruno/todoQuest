@@ -26,7 +26,7 @@ public class AccessREST {
     private AccessBean accessBean;
 
     @GET
-    @Path( "/login/user/password" )
+    @Path( "/login/{user}/{password}" )
     @Produces( { "application/json" } )
     public Response login( @PathParam( "user" ) String userId , @PathParam( "password" ) String password ) {
         SystemUser user = accessBean.login( userId , password );

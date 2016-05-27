@@ -48,7 +48,7 @@ public class UserREST {
     }
 
     @POST
-    @Path( "/update/hash" )
+    @Path( "/update/{hash}" )
     @Produces( { "application/json" } )
     public Response save( @PathParam( "hash" ) String hash , String json ) {
         if ( !accessBean.isLogged( hash ) ) {
@@ -61,7 +61,7 @@ public class UserREST {
     }
 
     @POST
-    @Path( "/changePassword/hash" )
+    @Path( "/changePassword/{hash}" )
     @Produces( { "application/json" } )
     public Response changePassword( @PathParam( "hash" ) String hash , String json ) {
         if ( !accessBean.isLogged( hash ) ) {
