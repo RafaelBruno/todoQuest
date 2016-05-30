@@ -1,0 +1,53 @@
+<div class="modal fade" id="tagListModal" tabindex="-1" role="dialog" aria-labelledby="tagListModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Tags</h4>
+      </div>
+      <div class="modal-body">
+        <button class="btn btn-primary btn-sm" ng-click="ctrl.goToModal('tagModal')" style="margin-bottom:10px;">Create new Tag</button>
+        <div class="well" ng-repeat="t in ctrl.tags">
+          {{t.title}}
+        </div>
+        <div class="well" ng-if="ctrl.tags.length === 0">
+          <h4 class="help-block"><center>No Tags created yet ;)</center></h4>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="tagModal" tabindex="-1" role="dialog" aria-labelledby="tagModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Tag</h4>
+      </div>
+      <div class="modal-body">
+        <div class="form-group">
+          <label for="title">Title</label>
+          <input type="text" id="title" placeholder="Title of your Tag" class="form-control input-hg" />
+        </div>
+        <div class="form-group">
+          <label for="title">Color</label>
+          <div class="panel-body">
+            <div class="row">
+              <div class="col-lg-2" ng-repeat="colorTag in ctrl.colorsTag" style="padding:2px">
+                <button  ng-style="{'background':'{{colorTag}}'}" class="btn btn-block btn-xs white">{{colorTag}}</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save</button>
+      </div>
+    </div>
+  </div>
+</div>

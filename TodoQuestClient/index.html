@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="login" ng-strict-di>
+<head>
+  <meta charset="UTF-8">
+  <title>Gamefication Project</title>
+
+  <link rel="stylesheet" href="app/build/css/style.css" media="screen" title="no title" charset="utf-8">
+  <link rel="stylesheet" href="vendor/bootstrap/dist/css/bootstrap.min.css" media="screen" charset="utf-8">
+  <link rel="stylesheet" href="vendor/flat-ui/dist/css/flat-ui.min.css" media="screen" charset="utf-8">
+  <link rel="stylesheet" href="vendor/toastr/toastr.min.css" media="screen" charset="utf-8">
+  <link href="app/assets/img/favicon.ico" rel="icon" type="image/x-icon" />
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
+
+</head>
+<body id="loginBackground" ng-controller="loginController as ctrl">
+
+  <!-- TOP -->
+  <h1 id="titleLogin" class="pixelFont">
+    <center>Todo Quest</center>
+  </h1>
+
+    <!-- LOGIN -->
+  <div class="row">
+    <div class="col-lg-4 col-lg-offset-4">
+      <div id="loginForm">
+        <div class="form-group">
+          <div class="input-group">
+            <input type="email" class="form-control" ng-model="ctrl.login" placeholder="Enter your Email" />
+            <span class="input-group-addon"><i class="flaticon-war"></i></span>
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="input-group">
+            <input type="password" class="form-control" ng-model="ctrl.password" placeholder="Password" />
+            <span class="input-group-addon"><i class="flaticon-shield"></i></span>
+          </div>
+        </div>
+        <a class="btn btn-primary btn-sm btn-block" ng-click="ctrl.validate(ctrl.login, ctrl.password)">Log in</a>
+        <center><span class="help-block">or</span></center>
+        <a class="btn btn-info btn-sm btn-block" ng-click="ctrl.goToModal('createAccount')">Create Account</a>
+        <a class="login-link" href="#">Lost your password?</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- CREATE USER MODAL -->
+  <div data-ng-include="'app/login/modal.createUser.html'"></div>
+
+
+  <!-- GIT AND LINKEDIN-->
+  <a id="gitImage" href="https://github.com/RafaelBruno/todoQuest" target="_blank">
+    <img src="app/assets/img/forkme.png" />
+  </a>
+
+  <div id="poweredBy">
+    <div id="rafael">
+      <img src="app/assets/img/rafael.jpg" alt="">
+      <span><a href="https://www.linkedin.com/in/rafaelbrunoweb/en" target="_blank">@rafaelbrunoweb</a></span>
+    </div>
+    <div id="julio">
+      <img src="app/assets/img/julio.jpg" alt="">
+      <span><a href="https://www.linkedin.com/in/juliocnsouza/en" target="_blank">@juliocnsouza</a></span>
+    </div>
+  </div>
+
+  <!-- JQUERY -->
+  <script src="vendor/jquery/dist/jquery.min.js" charset="utf-8"></script>
+  <!-- BOOTSTRAP -->
+  <script src="vendor/bootstrap/dist/js/bootstrap.min.js" charset="utf-8"></script>
+  <script src="vendor/flat-ui/dist/js/flat-ui.min.js" charset="utf-8"></script>
+  <!-- VENDOR -->
+  <script src="vendor/toastr/toastr.min.js" charset="utf-8"></script>
+  <script src="vendor/moment/min/moment.min.js" charset="utf-8"></script>
+  <script src="vendor/underscore/underscore-min.js" charset="utf-8"></script>
+  <!-- ANGULAR -->
+  <script src="vendor/angular/angular.min.js" charset="utf-8"></script>
+  <script src="vendor/angular-route/angular-route.min.js" charset="utf-8"></script>
+  <script src="vendor/angular-resource/angular-resource.min.js" charset="utf-8"></script>
+  <script src="vendor/angular-cookies/angular-cookies.min.js" charset="utf-8"></script>
+  <script src="vendor/angular-ui-router/release/angular-ui-router.min.js" charset="utf-8"></script>
+  <script src="vendor/angular-sanitize/angular-sanitize.min.js" charset="utf-8"></script>
+  <!-- JS -->
+  <script src="app/build/js/app.js" charset="utf-8"></script>
+  <script src="app/build/js/login.js" charset="utf-8"></script>
+
+</body>
+</html>
