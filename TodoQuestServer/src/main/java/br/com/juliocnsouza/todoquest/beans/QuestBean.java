@@ -1,7 +1,7 @@
 package br.com.juliocnsouza.todoquest.beans;
 
 import br.com.juliocnsouza.todoquest.collections.Quest;
-import br.com.juliocnsouza.todoquest.db.AbstractFacade;
+import br.com.juliocnsouza.todoquest.db.AbstractDAO;
 import br.com.juliocnsouza.todoquest.db.QueryParameters;
 import java.util.List;
 import javax.ejb.LocalBean;
@@ -15,7 +15,7 @@ import javax.persistence.PersistenceContext;
  */
 @Stateless
 @LocalBean
-public class QuestBean extends AbstractFacade<Quest> {
+public class QuestBean extends AbstractDAO<Quest> {
 
     @PersistenceContext( unitName = PERSISTENCE_UNIT )
     private EntityManager em;

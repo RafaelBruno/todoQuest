@@ -13,7 +13,7 @@ import javax.persistence.Query;
 /*
  * @author julio
  */
-public abstract class AbstractFacade<T> {
+public abstract class AbstractDAO<T> {
 
     public static final String PERSISTENCE_UNIT = "TodoQuestPU";
 
@@ -21,7 +21,7 @@ public abstract class AbstractFacade<T> {
 
     private final Class<T> entityClass;
 
-    public AbstractFacade( Class<T> entityClass ) {
+    public AbstractDAO( Class<T> entityClass ) {
         this.entityClass = entityClass;
     }
 
@@ -37,7 +37,7 @@ public abstract class AbstractFacade<T> {
         catch ( SecurityException ex ) {
             Logger.getLogger( this.getClass().getName() ).log( Level.SEVERE ,
                                                                ex.getMessage() );
-            Logger.getLogger( AbstractFacade.class.getName() ).log( Level.SEVERE ,
+            Logger.getLogger(AbstractDAO.class.getName() ).log( Level.SEVERE ,
                                                                     "{0}" + " " + EXCEPTION_WHILE_SAVING_ENTITY + "{1}" ,
                                                                     new Object[]{
                                                                         entityClass.getSimpleName() ,
@@ -47,7 +47,7 @@ public abstract class AbstractFacade<T> {
             Logger.getLogger( this.getClass().getName() ).log( Level.SEVERE ,
                                                                ex.getMessage() );
 
-            Logger.getLogger( AbstractFacade.class.getName() ).log( Level.SEVERE ,
+            Logger.getLogger(AbstractDAO.class.getName() ).log( Level.SEVERE ,
                                                                     "{0}" + " " + EXCEPTION_WHILE_SAVING_ENTITY + "{1}" ,
                                                                     new Object[]{
                                                                         entityClass.getSimpleName() ,
@@ -57,7 +57,7 @@ public abstract class AbstractFacade<T> {
             Logger.getLogger( this.getClass().getName() ).log( Level.SEVERE ,
                                                                ex.getMessage() );
 
-            Logger.getLogger( AbstractFacade.class.getName() ).log( Level.SEVERE ,
+            Logger.getLogger(AbstractDAO.class.getName() ).log( Level.SEVERE ,
                                                                     "{0}" + " " + EXCEPTION_WHILE_SAVING_ENTITY + "{1}" ,
                                                                     new Object[]{
                                                                         entityClass.getSimpleName() ,
@@ -67,7 +67,7 @@ public abstract class AbstractFacade<T> {
             Logger.getLogger( this.getClass().getName() ).log( Level.SEVERE ,
                                                                ex.getMessage() );
 
-            Logger.getLogger( AbstractFacade.class.getName() ).log( Level.SEVERE ,
+            Logger.getLogger(AbstractDAO.class.getName() ).log( Level.SEVERE ,
                                                                     "{0}" + " " + EXCEPTION_WHILE_SAVING_ENTITY + "{1}" ,
                                                                     new Object[]{
                                                                         entityClass.getSimpleName() ,
@@ -77,7 +77,7 @@ public abstract class AbstractFacade<T> {
             Logger.getLogger( this.getClass().getName() ).log( Level.SEVERE ,
                                                                ex.getMessage() );
 
-            Logger.getLogger( AbstractFacade.class.getName() ).log( Level.SEVERE ,
+            Logger.getLogger(AbstractDAO.class.getName() ).log( Level.SEVERE ,
                                                                     "{0}" + " " + EXCEPTION_WHILE_SAVING_ENTITY + "{1}" ,
                                                                     new Object[]{
                                                                         entityClass.getSimpleName() ,
@@ -178,7 +178,7 @@ public abstract class AbstractFacade<T> {
             catch ( Exception ex ) {
                 Logger.getLogger( this.getClass().getName() ).log( Level.SEVERE ,
                                                                    ex.getMessage() );
-                Logger.getLogger( AbstractFacade.class.getName() ).log(
+                Logger.getLogger(AbstractDAO.class.getName() ).log(
                         Level.SEVERE ,
                         "{0}" + " " + EXCEPTION_WHILE_SAVING_ENTITY + "{1}" ,
                         new Object[]{

@@ -1,7 +1,7 @@
 package br.com.juliocnsouza.todoquest.beans;
 
 import br.com.juliocnsouza.todoquest.collections.SystemUser;
-import br.com.juliocnsouza.todoquest.db.AbstractFacade;
+import br.com.juliocnsouza.todoquest.db.AbstractDAO;
 import javax.ejb.LocalBean;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
@@ -13,7 +13,7 @@ import javax.persistence.PersistenceContext;
  */
 @Stateless
 @LocalBean
-public class UserBean extends AbstractFacade<SystemUser> {
+public class UserBean extends AbstractDAO<SystemUser> {
 
     @PersistenceContext( unitName = PERSISTENCE_UNIT )
     private EntityManager em;
